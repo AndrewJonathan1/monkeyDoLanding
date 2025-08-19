@@ -291,35 +291,77 @@
             margin: 0 auto;
         }
         
-        .how-it-works {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 60px;
-            max-width: 700px;
-            margin: 40px auto;
-        }
-        
-        .step {
+        .how-section {
+            background: #FFD60A;
+            margin: 40px -20px;
+            padding: 60px 20px;
             text-align: center;
         }
         
-        .step-number {
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            opacity: 0.6;
-        }
-        
-        .step h3 {
-            font-size: 28px;
-            margin-bottom: 10px;
+        .how-section h2 {
+            font-size: 48px;
+            margin-bottom: 40px;
             font-weight: 900;
         }
         
-        .step p {
-            font-size: 18px;
-            line-height: 1.5;
+        .how-it-works {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            flex-wrap: wrap;
+        }
+        
+        .step-card {
+            background: white;
+            border: 3px solid #000;
+            border-radius: 20px;
+            padding: 30px;
+            width: 280px;
+            text-align: center;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.15);
+        }
+        
+        .arrow-divider {
+            font-size: 48px;
+            font-weight: bold;
+            opacity: 0.5;
+        }
+        
+        .step-number {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.5;
+        }
+        
+        .step-card h3 {
+            font-size: 32px;
+            margin-bottom: 12px;
+            font-weight: 900;
+        }
+        
+        .step-card p {
+            font-size: 16px;
+            line-height: 1.4;
+            opacity: 0.8;
+        }
+        
+        .no-square {
+            font-size: 20px;
+            font-style: italic;
+            opacity: 0.7;
+            margin-top: 20px;
         }
         
         .testimonial {
@@ -404,8 +446,16 @@
             }
             
             .how-it-works {
-                grid-template-columns: 1fr;
-                gap: 40px;
+                flex-direction: column;
+            }
+            
+            .arrow-divider {
+                transform: rotate(90deg);
+            }
+            
+            .step-card {
+                width: 100%;
+                max-width: 350px;
             }
         }
     </style>
@@ -422,26 +472,28 @@
     <div class="hero">
         <h1>monkey see.<br>monkey do.</h1>
         <p class="subhead">
-            You show your monkey once.<br>
+            Show your monkey once.<br>
             Our monkeys run it on demand.
         </p>
         <button class="cta-button" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="👋" data-tally-emoji-animation="wave">Join the Waitlist</button>
         <p class="join-count">2,847 people teaching their monkeys</p>
         
-        <div class="section" style="padding: 40px 20px;">
+        <div class="how-section">
             <h2>How It Works</h2>
             <div class="how-it-works">
-                <div class="step">
+                <div class="step-card">
                     <div class="step-number">Step 1</div>
                     <h3>monkey see</h3>
-                    <p>Hit record and show your task once. As easy as recording a Loom.</p>
+                    <p>screen record your task</p>
                 </div>
-                <div class="step">
+                <div class="arrow-divider">→</div>
+                <div class="step-card">
                     <div class="step-number">Step 2</div>
                     <h3>monkey do</h3>
-                    <p>Stop recording. Your monkeys run it on demand.</p>
+                    <p>Our ai monkey agents run it on demand</p>
                 </div>
             </div>
+            <p class="no-square">you don't need to square any more</p>
         </div>
         
         <div class="visual">
