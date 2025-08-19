@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>monkeyDo - monkey see. monkey do.</title>
-    <script async src="https://tally.so/widgets/embed.js"></script>
+    <link rel="preconnect" href="https://tally.so">
+    <link rel="dns-prefetch" href="https://tally.so">
+    <script src="https://tally.so/widgets/embed.js"></script>
     <style>
         * {
             margin: 0;
@@ -516,5 +518,14 @@
         <p>© 2024 monkeyDo. monkey see. monkey do.</p>
     </footer>
     
+<script>
+    // Preload the form immediately when page loads
+    window.addEventListener('DOMContentLoaded', function() {
+        if (window.Tally) {
+            // Preload the form in hidden state
+            Tally.loadEmbeds();
+        }
+    });
+</script>
 </body>
 </html>
