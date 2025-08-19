@@ -118,8 +118,20 @@
         }
         
         .highlight-yellow {
-            background: linear-gradient(180deg, transparent 60%, #FFD60A 60%);
-            padding: 0 4px;
+            background: linear-gradient(180deg, rgba(255, 214, 10, 0) 60%, #FFD60A 60%);
+            padding: 2px 4px;
+            display: inline;
+            line-height: 1.1;
+        }
+        
+        /* Individual word highlighting for multiline support */
+        .highlight-word {
+            background-image: linear-gradient(to bottom, transparent 0%, transparent 60%, #FFD60A 60%, #FFD60A 100%);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            padding: 0 2px;
+            display: inline;
+            line-height: inherit;
         }
         
         .cta-button {
@@ -775,78 +787,49 @@
         footer.textContent = randomJoke;
     });
     
-    // Cycle through different hero text variations
-    const heroVariations = [
-        // "Just did" category - tasks they hate but do
-        {
-            text: "That boring task<br>you just did?",
-            action: "Never do it again."
-        },
-        {
-            text: "That Monday task<br>you just did?",
-            action: "Never do it again."
-        },
-        {
-            text: "That tedious task<br>you just did?",
-            action: "Never do it again."
-        },
-        {
-            text: "That annoying task<br>you just did?",
-            action: "Never do it again."
-        },
-        {
-            text: "That daily task<br>you just did?",
-            action: "Never do it again."
-        },
-        {
-            text: "That copy-paste task<br>you just did?",
-            action: "Never do it again."
-        },
-        {
-            text: "That dumb task<br>you just did?",
-            action: "Never do it again."
-        },
-        {
-            text: "That repetitive task<br>you just did?",
-            action: "Never do it again."
-        },
-        
-        // "Never built" category - workflows they wish existed
-        {
-            text: "That workflow you<br>never built?",
-            action: "Build it in 2 minutes."
-        },
-        {
-            text: "That automation you<br>gave up on?",
-            action: "Finally make it happen."
-        },
-        {
-            text: "That 10-step process<br>you keep avoiding?",
-            action: "Record once. Done forever."
-        },
-        {
-            text: "That dream workflow<br>you never finished?",
-            action: "Show us once. It's built."
-        },
-        {
-            text: "That complex task<br>you outsource?",
-            action: "Build it yourself. Today."
-        },
-        {
-            text: "That weekend project<br>you keep postponing?",
-            action: "Two minutes. Problem solved."
-        },
-        {
-            text: "That integration you<br>wish existed?",
-            action: "Record it. It exists."
-        },
-        {
-            text: "That process that<br>seems impossible?",
-            action: "Show us how to do it once. Run it on demand."
-        }
-    ];
+    // Cycle through different hero text variations - structured by category
+    const heroCategories = {
+        negative: [
+            // "Just did" category - tasks they hate but just completed
+            { text: "That boring task<br>you just did?", action: "Never do it again." },
+            { text: "That Monday task<br>you just did?", action: "Never do it again." },
+            { text: "That tedious task<br>you just did?", action: "Never do it again." },
+            { text: "That annoying task<br>you just did?", action: "Never do it again." },
+            { text: "That daily task<br>you just did?", action: "Never do it again." },
+            { text: "That copy-paste task<br>you just did?", action: "Never do it again." },
+            { text: "That dumb task<br>you just did?", action: "Never do it again." },
+            { text: "That repetitive task<br>you just did?", action: "Never do it again." }
+        ],
+        positive: [
+            // "Never built" category - workflows they wish existed
+            { text: "That workflow you<br>never built?", action: "Build it in 2 minutes." },
+            { text: "That automation you<br>gave up on?", action: "Finally make it happen." },
+            { text: "That 10-step process<br>you keep avoiding?", action: "Record once. Done forever." },
+            { text: "That dream workflow<br>you never finished?", action: "Show us once. It's built." },
+            { text: "That complex task<br>you outsource?", action: "Build it yourself. Today." },
+            { text: "That weekend project<br>you keep postponing?", action: "Two minutes. Problem solved." },
+            { text: "That integration you<br>wish existed?", action: "Record it. It exists." },
+            { text: "That process that<br>seems impossible?", action: "Show us how to do it once. Run it on demand." }
+        ]
+    };
     
-    let shuffledVariations = [...heroVariations];
+    // Create mixed array that alternates between negative and positive
+    function createMixedVariations() {
+        const negativeShuffled = shuffleArray([...heroCategories.negative]);
+        const positiveShuffled = shuffleArray([...heroCategories.positive]);
+        const mixed = [];
+        
+        // Alternate between negative and positive, ensuring good distribution
+        const maxLength = Math.max(negativeShuffled.length, positiveShuffled.length);
+        for (let i = 0; i < maxLength; i++) {
+            if (i < negativeShuffled.length) mixed.push(negativeShuffled[i]);
+            if (i < positiveShuffled.length) mixed.push(positiveShuffled[i]);
+        }
+        
+        return shuffleArray(mixed); // Final shuffle for extra randomness
+    }
+    
+    let shuffledVariations = createMixedVariations();
     let currentIndex = 0;
     
     // Shuffle array using Fisher-Yates algorithm
@@ -862,9 +845,9 @@
         const textElement = document.getElementById('hero-text');
         const actionElement = document.getElementById('hero-action');
         if (textElement && actionElement) {
-            // If we've shown all variations, reshuffle and start over
+            // If we've shown all variations, create new mixed array and start over
             if (currentIndex >= shuffledVariations.length) {
-                shuffledVariations = shuffleArray([...heroVariations]);
+                shuffledVariations = createMixedVariations();
                 currentIndex = 0;
             }
             
@@ -879,7 +862,14 @@
             
             setTimeout(() => {
                 textElement.innerHTML = variation.text;
-                actionElement.textContent = variation.action;
+                // Wrap action text to ensure highlighting works on wrapped lines
+                const actionWords = variation.action.split(' ');
+                const wrappedAction = actionWords.map((word, index) => {
+                    // Add space to all words except the last one
+                    const wordWithSpace = index < actionWords.length - 1 ? word + ' ' : word;
+                    return `<span class="highlight-word">${wordWithSpace}</span>`;
+                }).join('');
+                actionElement.innerHTML = wrappedAction;
                 
                 // Reset positions to the right
                 textElement.style.transition = 'none';
@@ -906,8 +896,8 @@
         const heroText = document.getElementById('hero-text');
         const heroAction = document.getElementById('hero-action');
         if (heroText && heroAction) {
-            // Shuffle on page load
-            shuffledVariations = shuffleArray([...heroVariations]);
+            // Create mixed variations on page load
+            shuffledVariations = createMixedVariations();
             
             heroText.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
             heroText.style.display = 'inline-block';
