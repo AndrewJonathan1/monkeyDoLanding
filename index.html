@@ -79,13 +79,14 @@
         
         .demo-link:hover {
             transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 6px 16px rgba(255, 214, 10, 0.3), 4px 4px 0 rgba(0,0,0,0.2);
-            background: linear-gradient(135deg, #FFD60A 0%, #FFE44D 100%);
+            box-shadow: 0 6px 16px rgba(255, 214, 10, 0.4), 4px 4px 0 rgba(0,0,0,0.15);
+            background: #FFDE33;
         }
         
         .demo-link:active {
             transform: scale(0.98);
             box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+            background: #F5C800;
         }
         
         .hero {
@@ -127,14 +128,15 @@
         
         .cta-button:hover {
             transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 214, 10, 0.4), 6px 6px 0 rgba(0,0,0,0.2);
-            background: linear-gradient(135deg, #FFD60A 0%, #FFE44D 100%);
+            box-shadow: 0 8px 20px rgba(255, 214, 10, 0.5), 6px 6px 0 rgba(0,0,0,0.15);
+            background: #FFDE33;
             border-color: #000;
         }
         
         .cta-button:active {
             transform: scale(0.98);
             box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+            background: #F5C800;
         }
         
         .join-count {
@@ -478,13 +480,14 @@
         
         .carousel-btn:hover {
             transform: scale(1.1) translateY(-2px);
-            box-shadow: 0 6px 16px rgba(255, 214, 10, 0.3), 3px 3px 0 rgba(0,0,0,0.2);
-            background: linear-gradient(135deg, #FFD60A 0%, #FFE44D 100%);
+            box-shadow: 0 6px 16px rgba(255, 214, 10, 0.4), 3px 3px 0 rgba(0,0,0,0.15);
+            background: #FFDE33;
         }
         
         .carousel-btn:active {
             transform: scale(0.95);
             box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+            background: #F5C800;
         }
         
         .carousel-dots {
@@ -527,15 +530,17 @@
         }
         
         .final-cta .cta-button:hover {
-            background: linear-gradient(135deg, #FFD60A 0%, #FFE44D 100%);
-            border-color: #FFE44D;
+            background: #FFDE33;
+            border-color: #FFDE33;
             transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 214, 10, 0.5), 6px 6px 0 rgba(255,255,255,0.2);
+            box-shadow: 0 8px 20px rgba(255, 222, 51, 0.6), 6px 6px 0 rgba(255,255,255,0.15);
         }
         
         .final-cta .cta-button:active {
             transform: scale(0.98);
             box-shadow: 2px 2px 0 rgba(255,255,255,0.2);
+            background: #F5C800;
+            border-color: #F5C800;
         }
         
         .tagline {
@@ -722,10 +727,7 @@
     
     function playVideo() {
         if (typeof posthog !== 'undefined') {
-            posthog.capture('video_played', {
-                video_title: 'Demo video',
-                location: 'video_section'
-            });
+            posthog.capture('video_played');
         }
         alert('Demo video coming soon!');
     }
