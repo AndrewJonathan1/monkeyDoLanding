@@ -462,9 +462,21 @@
         }
         
         .time-saved {
-            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .time-saved-title {
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            margin-bottom: 8px;
+        }
+        
+        .time-saved-metric {
+            font-size: 32px;
             font-weight: 900;
-            margin-bottom: 16px;
             color: #000;
         }
         
@@ -728,19 +740,28 @@
             <h2>Time they got back</h2>
             <div class="testimonial-grid">
                 <div class="testimonial-card">
-                    <div class="time-saved">Monday mornings: 3 hours → 0 minutes</div>
+                    <div class="time-saved">
+                        <div class="time-saved-title">Monday mornings</div>
+                        <div class="time-saved-metric">3 hours → 0 minutes</div>
+                    </div>
                     <p class="testimonial-quote">"I was spending every Monday morning aggregating data from 5 different sources. Showed monkeyDo once. Now I wake up to completed reports."</p>
                     <div class="testimonial-author">Sarah Mitchell</div>
                     <div class="testimonial-title">Head of Operations</div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="time-saved">SDR work: 4 hours → automated</div>
+                    <div class="time-saved">
+                        <div class="time-saved-title">SDR work</div>
+                        <div class="time-saved-metric">4 hours → automated</div>
+                    </div>
                     <p class="testimonial-quote">"monkeyDo does my entire lead enrichment workflow. LinkedIn → Email finder → CRM → Personalized outreach. I just close deals now."</p>
                     <div class="testimonial-author">Marcus Kim</div>
                     <div class="testimonial-title">Sales Director</div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="time-saved">Daily invoicing: 2 hours → done</div>
+                    <div class="time-saved">
+                        <div class="time-saved-title">Daily invoicing</div>
+                        <div class="time-saved-metric">2 hours → done</div>
+                    </div>
                     <p class="testimonial-quote">"I literally forgot I had this task. monkeyDo processes 200+ invoices daily, categorizes them, enters into QuickBooks. It just... happens."</p>
                     <div class="testimonial-author">Jennifer Chen</div>
                     <div class="testimonial-title">Finance Manager</div>
