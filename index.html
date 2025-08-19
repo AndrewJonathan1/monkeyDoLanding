@@ -236,11 +236,11 @@
             background: white;
             border: 3px solid #000;
             border-radius: 20px;
-            padding: 30px;
+            padding: 40px;
             flex: 1;
-            max-width: 300px;
-            min-width: 280px;
-            height: 200px;
+            max-width: 350px;
+            min-width: 320px;
+            height: 240px;
             text-align: center;
             box-shadow: 8px 8px 0 rgba(0,0,0,0.1);
             transition: transform 0.2s;
@@ -563,7 +563,7 @@
     </nav>
     
     <div class="hero">
-        <h1><span id="hero-text">That boring task<br>you just did?</span><br><span class="highlight-yellow">Never do it again.</span></h1>
+        <h1><span id="hero-text">That boring task<br>you just did?</span><br><span class="highlight-yellow" id="hero-action">Never do it again.</span></h1>
         <p class="subhead">
             Show us once. Run it on demand.<br>
             As easy as recording a Loom.
@@ -762,50 +762,110 @@
     });
     
     // Cycle through different hero text variations
-    const heroTexts = [
+    const heroVariations = [
         // "Just did" category - tasks they hate but do
-        "That boring task<br>you just did?",
-        "That Monday task<br>you just did?", 
-        "That tedious task<br>you just did?",
-        "That annoying task<br>you just did?",
-        "That daily task<br>you just did?",
-        "That copy-paste task<br>you just did?",
-        "That dumb task<br>you just did?",
-        "That repetitive task<br>you just did?",
+        {
+            text: "That boring task<br>you just did?",
+            action: "Never do it again."
+        },
+        {
+            text: "That Monday task<br>you just did?",
+            action: "Never do it again."
+        },
+        {
+            text: "That tedious task<br>you just did?",
+            action: "Never do it again."
+        },
+        {
+            text: "That annoying task<br>you just did?",
+            action: "Never do it again."
+        },
+        {
+            text: "That daily task<br>you just did?",
+            action: "Never do it again."
+        },
+        {
+            text: "That copy-paste task<br>you just did?",
+            action: "Never do it again."
+        },
+        {
+            text: "That dumb task<br>you just did?",
+            action: "Never do it again."
+        },
+        {
+            text: "That repetitive task<br>you just did?",
+            action: "Never do it again."
+        },
         
         // "Never built" category - workflows they wish existed
-        "That workflow you<br>never built?",
-        "That automation you<br>gave up on?",
-        "That 10-step process<br>you keep avoiding?",
-        "That dream workflow<br>you never finished?",
-        "That complex task<br>you outsource?",
-        "That weekend project<br>you keep postponing?",
-        "That integration you<br>wish existed?",
-        "That process that<br>seems impossible?"
+        {
+            text: "That workflow you<br>never built?",
+            action: "Build it in 2 minutes."
+        },
+        {
+            text: "That automation you<br>gave up on?",
+            action: "Finally make it happen."
+        },
+        {
+            text: "That 10-step process<br>you keep avoiding?",
+            action: "Record once. Done forever."
+        },
+        {
+            text: "That dream workflow<br>you never finished?",
+            action: "Show us once. It's built."
+        },
+        {
+            text: "That complex task<br>you outsource?",
+            action: "Build it yourself. Today."
+        },
+        {
+            text: "That weekend project<br>you keep postponing?",
+            action: "Two minutes. Problem solved."
+        },
+        {
+            text: "That integration you<br>wish existed?",
+            action: "Record it. It exists."
+        },
+        {
+            text: "That process that<br>seems impossible?",
+            action: "Show us once. It's real."
+        }
     ];
     
     let currentIndex = 0;
     
     function cycleHeroText() {
-        const element = document.getElementById('hero-text');
-        if (element) {
-            currentIndex = (currentIndex + 1) % heroTexts.length;
+        const textElement = document.getElementById('hero-text');
+        const actionElement = document.getElementById('hero-action');
+        if (textElement && actionElement) {
+            currentIndex = (currentIndex + 1) % heroVariations.length;
+            const variation = heroVariations[currentIndex];
             
-            // Slide out to the left
-            element.style.transform = 'translateX(-20px)';
-            element.style.opacity = '0';
+            // Slide out both elements
+            textElement.style.transform = 'translateX(-20px)';
+            textElement.style.opacity = '0';
+            actionElement.style.transform = 'translateX(-20px)';
+            actionElement.style.opacity = '0';
             
             setTimeout(() => {
-                element.innerHTML = heroTexts[currentIndex];
-                // Reset position to the right
-                element.style.transition = 'none';
-                element.style.transform = 'translateX(20px)';
+                textElement.innerHTML = variation.text;
+                actionElement.textContent = variation.action;
                 
-                // Slide in from the right
+                // Reset positions to the right
+                textElement.style.transition = 'none';
+                textElement.style.transform = 'translateX(20px)';
+                actionElement.style.transition = 'none';
+                actionElement.style.transform = 'translateX(20px)';
+                
+                // Slide in both elements
                 setTimeout(() => {
-                    element.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
-                    element.style.transform = 'translateX(0)';
-                    element.style.opacity = '1';
+                    textElement.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+                    textElement.style.transform = 'translateX(0)';
+                    textElement.style.opacity = '1';
+                    
+                    actionElement.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+                    actionElement.style.transform = 'translateX(0)';
+                    actionElement.style.opacity = '1';
                 }, 10);
             }, 500);
         }
@@ -814,9 +874,12 @@
     // Add transition style
     document.addEventListener('DOMContentLoaded', function() {
         const heroText = document.getElementById('hero-text');
-        if (heroText) {
+        const heroAction = document.getElementById('hero-action');
+        if (heroText && heroAction) {
             heroText.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
             heroText.style.display = 'inline-block';
+            heroAction.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+            heroAction.style.display = 'inline-block';
             // Start cycling after 3.5 seconds, then every 3.5 seconds
             setTimeout(() => {
                 cycleHeroText();
