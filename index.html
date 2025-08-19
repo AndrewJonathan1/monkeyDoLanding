@@ -603,7 +603,7 @@
                 <span>🐵</span>
                 <span>monkeyDo</span>
             </div>
-            <a href="javascript:void(0)" onclick="document.getElementById('demo').scrollIntoView()" class="demo-link">See demo →</a>
+            <a href="javascript:void(0)" onclick="trackCTA('navbar', 'See demo'); document.getElementById('demo').scrollIntoView()" class="demo-link">See demo →</a>
         </div>
     </nav>
     
@@ -710,11 +710,11 @@
     
 <script>
     // PostHog Event Tracking
-    function trackCTA(location) {
+    function trackCTA(location, ctaText = 'Try it free') {
         if (typeof posthog !== 'undefined') {
             posthog.capture('cta_clicked', {
                 location: location,
-                cta_text: 'Try it free',
+                cta_text: ctaText,
                 page_scroll_depth: Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100)
             });
         }
