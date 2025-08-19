@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>monkeyDo - All Versions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #FFFFFF;
+            color: #000;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            opacity: 0.7;
+            margin-bottom: 60px;
+        }
+        
+        .version-grid {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .version-card {
+            background: white;
+            border: 3px solid #000;
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.2s ease;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.1);
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .version-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.15);
+        }
+        
+        .version-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .version-title {
+            font-size: 28px;
+            font-weight: 900;
+        }
+        
+        .version-badge {
+            background: #FFD60A;
+            color: #000;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            border: 2px solid #000;
+            text-transform: uppercase;
+        }
+        
+        .version-badge.current {
+            background: #000;
+            color: #FFD60A;
+        }
+        
+        .version-date {
+            font-size: 14px;
+            opacity: 0.6;
+            margin-bottom: 16px;
+        }
+        
+        .version-description {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .version-changes {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .version-changes h4 {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .version-changes ul {
+            margin-left: 20px;
+        }
+        
+        .version-changes li {
+            margin: 4px 0;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 40px;
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        
+        .back-link:hover {
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            .version-title {
+                font-size: 24px;
+            }
+            
+            .version-header {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Back to monkeyDo</a>
+        
+        <h1>🐵 monkeyDo Versions</h1>
+        <p class="subtitle">All landing page versions for testing and comparison</p>
+        
+        <div class="version-grid">
+            <a href="/" class="version-card">
+                <div class="version-header">
+                    <h2 class="version-title">Version 3.0</h2>
+                    <span class="version-badge current">Current</span>
+                </div>
+                <p class="version-date">December 2024</p>
+                <p class="version-description">
+                    Clearer value proposition focused on eliminating repetitive work. Emphasizes ease of use - "as easy as recording a Loom video."
+                </p>
+                <div class="version-changes">
+                    <h4>Key features:</h4>
+                    <ul>
+                        <li>Direct headline: "Your daily tasks. Running without you."</li>
+                        <li>How It Works section immediately after hero</li>
+                        <li>Pain-focused use cases (Daily torture → Weekly dread → Monthly slog)</li>
+                        <li>Time waste calculator showing hours/days/dollars lost</li>
+                        <li>Social proof: "Join 2,847 people who never do the same task twice"</li>
+                        <li>Testimonials focused on time saved and automation results</li>
+                    </ul>
+                </div>
+            </a>
+            
+            <a href="/v2/" class="version-card">
+                <div class="version-header">
+                    <h2 class="version-title">Version 2.0</h2>
+                    <span class="version-badge">Previous</span>
+                </div>
+                <p class="version-date">December 2024</p>
+                <p class="version-description">
+                    Original playful version with "monkey see. monkey do." concept. More focus on the brand personality and learning metaphor.
+                </p>
+                <div class="version-changes">
+                    <h4>Key features:</h4>
+                    <ul>
+                        <li>Playful headline: "monkey see. monkey do."</li>
+                        <li>Emphasis on showing once, running forever</li>
+                        <li>Simple 2-step process visualization</li>
+                        <li>Problem section about repetitive work and no-code complexity</li>
+                        <li>Success stories about accidental businesses</li>
+                        <li>Footer with rotating monkey jokes</li>
+                    </ul>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
