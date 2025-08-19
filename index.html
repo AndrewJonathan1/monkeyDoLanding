@@ -717,9 +717,36 @@
     </div>
     
     <footer>
-        <p id="footer-text">© monkeyDo - Where repetitive tasks go to die</p>
+        <p id="footer-text">© monkeyDo - monkey see. monkey do.</p>
     </footer>
     
+<script>
+    // Randomly generate playful monkey footer jokes
+    const footerJokes = [
+        "© monkeyDo - No monkeys were harmed in the making of this automation",
+        "© monkeyDo - Bananas not included",
+        "© monkeyDo - Making monkey business legitimate since yesterday",
+        "© monkeyDo - We're not monkeying around (yes we are)",
+        "© monkeyDo - Powered by artificial monkey intelligence",
+        "© monkeyDo - Going bananas so you don't have to",
+        "© monkeyDo - Evolution's latest update",
+        "© monkeyDo - Teaching old monkeys new tricks daily",
+        "© monkeyDo - Monkey see, monkey do, human relax",
+        "© monkeyDo - Where repetitive tasks go to evolve",
+        "© monkeyDo - Turning monkey business into serious business",
+        "© monkeyDo - Because even monkeys hate copy-paste",
+        "© monkeyDo - More reliable than an actual monkey",
+        "© monkeyDo - The oldest learning algorithm. Now automated."
+    ];
+    
+    // Set random footer on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const footer = document.getElementById('footer-text');
+        const randomJoke = footerJokes[Math.floor(Math.random() * footerJokes.length)];
+        footer.textContent = randomJoke;
+    });
+</script>
+
 <script>
     // PostHog Event Tracking
     function trackCTA(location, ctaText = 'Show your first task') {

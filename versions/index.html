@@ -39,7 +39,15 @@
         
         .version-grid {
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 30px;
+            justify-items: center;
+        }
+        
+        @media (max-width: 900px) {
+            .version-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         .version-card {
@@ -52,6 +60,8 @@
             display: block;
             text-decoration: none;
             color: inherit;
+            width: 100%;
+            max-width: 500px;
         }
         
         .version-card:hover {
@@ -207,6 +217,26 @@
                     </ul>
                 </div>
             </a>
+            
+            <div class="version-card placeholder">
+                <div class="version-header">
+                    <h2 class="version-title">Loom → Documentation</h2>
+                    <span class="version-badge coming-soon">Coming Soon</span>
+                </div>
+                <p class="version-description">
+                    Transform your Loom recordings into beautiful documentation. Record once, generate guides with screenshots, annotations, and step-by-step instructions.
+                </p>
+                <div class="version-changes">
+                    <h4>Planned features:</h4>
+                    <ul>
+                        <li>Auto-generate documentation from screen recordings</li>
+                        <li>Automatic screenshot capture at key moments</li>
+                        <li>AI-generated step descriptions and annotations</li>
+                        <li>Export to Notion, Confluence, or markdown</li>
+                        <li>Perfect for onboarding, SOPs, and training materials</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </body>
