@@ -64,13 +64,20 @@
             padding: 8px 20px;
             border-radius: 25px;
             font-weight: 500;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
             background: #FFD60A;
+            display: inline-block;
         }
         
         .demo-link:hover {
-            background: #000;
-            color: #FFD60A;
+            transform: scale(1.05);
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+            background: #E5C000;
+        }
+        
+        .demo-link:active {
+            transform: scale(0.98);
+            box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
         }
         
         .hero {
@@ -103,15 +110,22 @@
             border: 2px solid #000;
             border-radius: 50px;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.2s ease;
             white-space: nowrap;
             margin: 0 auto 15px;
             display: block;
+            position: relative;
         }
         
         .cta-button:hover {
             transform: scale(1.05);
             box-shadow: 5px 5px 0 rgba(0,0,0,0.2);
+            background: #E5C000;
+        }
+        
+        .cta-button:active {
+            transform: scale(0.98);
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
         }
         
         .join-count {
@@ -450,11 +464,18 @@
             font-weight: bold;
             cursor: pointer;
             margin: 0 10px;
-            transition: transform 0.2s;
+            transition: all 0.2s ease;
         }
         
         .carousel-btn:hover {
             transform: scale(1.1);
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+            background: #E5C000;
+        }
+        
+        .carousel-btn:active {
+            transform: scale(0.95);
+            box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
         }
         
         .carousel-dots {
@@ -497,9 +518,15 @@
         }
         
         .final-cta .cta-button:hover {
-            background: white;
-            color: #221e16;
-            border-color: white;
+            background: #E5C000;
+            border-color: #E5C000;
+            transform: scale(1.05);
+            box-shadow: 5px 5px 0 rgba(255,255,255,0.2);
+        }
+        
+        .final-cta .cta-button:active {
+            transform: scale(0.98);
+            box-shadow: 2px 2px 0 rgba(255,255,255,0.2);
         }
         
         .tagline {
