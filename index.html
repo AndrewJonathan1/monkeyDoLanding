@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>monkeyDo - monkey see. monkey do.</title>
+    <script async src="https://tally.so/widgets/embed.js"></script>
     <style>
         * {
             margin: 0;
@@ -422,7 +423,7 @@
             You show your monkey once.<br>
             Our monkeys run it on demand.
         </p>
-        <button class="cta-button" onclick="alert('Waitlist popup coming soon!')">Join the Waitlist</button>
+        <button class="cta-button" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="👋" data-tally-emoji-animation="wave">Join the Waitlist</button>
         <p class="join-count">2,847 people teaching their monkeys</p>
         
         <div class="section" style="padding: 40px 20px;">
@@ -506,10 +507,7 @@
     <div class="final-cta">
         <div class="container">
             <h2>Ready to teach your monkey?</h2>
-            <form class="email-form" onsubmit="handleSubmit(event)">
-                <input type="email" class="email-input" placeholder="Enter your work email" required>
-                <button type="submit" class="cta-button">Join the Waitlist</button>
-            </form>
+            <button class="cta-button" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="👋" data-tally-emoji-animation="wave">Join the Waitlist</button>
             <p class="tagline">The oldest learning algorithm. Now automated.</p>
         </div>
     </div>
@@ -518,12 +516,5 @@
         <p>© 2024 monkeyDo. monkey see. monkey do.</p>
     </footer>
     
-    <script>
-        function handleSubmit(event) {
-            event.preventDefault();
-            alert('Welcome to monkeyDo! We\'ll be in touch soon.');
-            event.target.reset();
-        }
-    </script>
 </body>
 </html>
