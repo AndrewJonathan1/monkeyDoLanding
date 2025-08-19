@@ -553,7 +553,7 @@
     </nav>
     
     <div class="hero">
-        <h1>That <span id="task-type">boring</span> task you just did?<br><span class="highlight-yellow">Never do it again.</span></h1>
+        <h1>That <span id="task-type-container" style="display: inline-block; position: relative; min-width: 150px;"><span id="task-type" style="display: inline-block;">boring</span></span> task you just did?<br><span class="highlight-yellow">Never do it again.</span></h1>
         <p class="subhead">
             Show us once. Run it on demand.<br>
             As easy as recording a Loom.
@@ -762,13 +762,27 @@
     
     function cycleTaskType() {
         const element = document.getElementById('task-type');
-        if (element) {
+        const container = document.getElementById('task-type-container');
+        if (element && container) {
             currentIndex = (currentIndex + 1) % taskDescriptors.length;
+            
+            // Slide out to the left
+            element.style.transform = 'translateX(-20px)';
             element.style.opacity = '0';
+            
             setTimeout(() => {
                 element.textContent = taskDescriptors[currentIndex];
-                element.style.opacity = '1';
-            }, 200);
+                // Reset position to the right
+                element.style.transition = 'none';
+                element.style.transform = 'translateX(20px)';
+                
+                // Slide in from the right
+                setTimeout(() => {
+                    element.style.transition = 'transform 0.3s ease-out, opacity 0.3s ease-out';
+                    element.style.transform = 'translateX(0)';
+                    element.style.opacity = '1';
+                }, 10);
+            }, 300);
         }
     }
     
@@ -776,7 +790,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         const taskType = document.getElementById('task-type');
         if (taskType) {
-            taskType.style.transition = 'opacity 0.2s ease-in-out';
+            taskType.style.transition = 'transform 0.3s ease-out, opacity 0.3s ease-out';
             // Start cycling after 2.5 seconds, then every 2.5 seconds
             setTimeout(() => {
                 cycleTaskType();
