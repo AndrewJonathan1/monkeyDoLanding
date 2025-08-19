@@ -7,6 +7,14 @@
     <link rel="preconnect" href="https://tally.so">
     <link rel="dns-prefetch" href="https://tally.so">
     <script src="https://tally.so/widgets/embed.js"></script>
+    <!-- PostHog Analytics -->
+    <script>
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Re Ms Fs Pe Rs Cs capture Ve calculateEventProperties Ds register register_once register_for_session unregister unregister_for_session zs getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ls As createPersonProfile Ns Is Us opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing is_capturing clear_opt_in_out_capturing Os debug I js getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init('phc_8BxAvgklx3h0MUUYauRwYqXwXpkjqPwxCYMy0l5oeZZ', {
+            api_host: 'https://us.i.posthog.com',
+            person_profiles: 'identified_only'
+        })
+    </script>
     <style>
         * {
             margin: 0;
@@ -605,7 +613,7 @@
             Show our monkeys once.<br>
             They will run it on demand.
         </p>
-        <button class="cta-button" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="👋" data-tally-emoji-animation="wave">Try it free</button>
+        <button class="cta-button" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="👋" data-tally-emoji-animation="wave" onclick="trackCTA('hero')">Try it free</button>
         <p class="join-count">2,847 people teaching their monkeys</p>
     </div>
     
@@ -613,7 +621,7 @@
         <div class="container">
             <h2>See It In Action</h2>
             <p style="margin-bottom: 25px; opacity: 0.8;">Automate your tasks in minutes.</p>
-            <div class="video-placeholder" onclick="alert('Demo video coming soon!')">
+            <div class="video-placeholder" onclick="playVideo()">
                 <div class="play-button">▶</div>
             </div>
         </div>
@@ -691,7 +699,7 @@
     <div class="final-cta">
         <div class="container">
             <h2>Stop doing repetitive work</h2>
-            <button class="cta-button" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="👋" data-tally-emoji-animation="wave">Try it free</button>
+            <button class="cta-button" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="👋" data-tally-emoji-animation="wave" onclick="trackCTA('final')">Try it free</button>
             <p class="tagline">The oldest learning algorithm. Now automated.</p>
         </div>
     </div>
@@ -701,6 +709,39 @@
     </footer>
     
 <script>
+    // PostHog Event Tracking
+    function trackCTA(location) {
+        if (typeof posthog !== 'undefined') {
+            posthog.capture('cta_clicked', {
+                location: location,
+                cta_text: 'Try it free',
+                page_scroll_depth: Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100)
+            });
+        }
+    }
+    
+    function playVideo() {
+        if (typeof posthog !== 'undefined') {
+            posthog.capture('video_played', {
+                video_title: 'Demo video',
+                location: 'video_section'
+            });
+        }
+        alert('Demo video coming soon!');
+    }
+    
+    // Track page landed
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof posthog !== 'undefined') {
+            posthog.capture('page_landed', {
+                page: 'landing_page',
+                referrer: document.referrer,
+                utm_source: new URLSearchParams(window.location.search).get('utm_source'),
+                utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign')
+            });
+        }
+    });
+    
     // Randomly generate playful monkey footer jokes
     const footerJokes = [
         "© monkeyDo - No monkeys were harmed in the making of this automation",
