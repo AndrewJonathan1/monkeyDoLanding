@@ -194,7 +194,6 @@
         .task-list {
             max-width: 500px;
             margin: 40px auto 0;
-            text-align: left;
         }
         
         .task-item {
@@ -256,20 +255,22 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            border: 3px solid #FFD60A;
+            border: 3px solid #000;
         }
         
         .play-button {
             width: 80px;
             height: 80px;
-            background: white;
+            background: #FFD60A;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 32px;
+            padding-left: 5px;
+            color: #000;
             transition: transform 0.2s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px rgba(255, 214, 10, 0.4);
         }
         
         .video-placeholder:hover .play-button {
@@ -307,23 +308,20 @@
         }
         
         .pain-label {
-            background: #FFD60A;
+            display: inline-block;
             color: #000;
-            padding: 8px 20px;
-            border-radius: 25px;
+            padding: 4px 0;
             font-size: 14px;
             font-weight: bold;
-            border: 2px solid #000;
+            border-bottom: 2px solid #FFD60A;
         }
         
         .pain-label.medium {
-            background: white;
-            border: 2px solid #000;
+            border-bottom: 2px solid #999;
         }
         
         .pain-label.low {
-            background: #f5f5f5;
-            border: 2px solid #000;
+            border-bottom: 2px solid #ccc;
         }
         
         .pain-title {
@@ -368,9 +366,6 @@
             font-size: 16px;
             font-weight: bold;
             color: #000;
-            background: linear-gradient(180deg, transparent 60%, #FFD60A 60%);
-            display: inline-block;
-            padding: 0 4px;
         }
         
         /* Testimonials */
@@ -408,9 +403,6 @@
             font-weight: 900;
             margin-bottom: 16px;
             color: #000;
-            background: linear-gradient(180deg, transparent 60%, #FFD60A 60%);
-            display: inline-block;
-            padding: 0 4px;
         }
         
         .testimonial-quote {
@@ -503,7 +495,7 @@
                 <span>🐵</span>
                 <span>monkeyDo</span>
             </div>
-            <a href="#" onclick="trackCTA('navbar')" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="🚀" data-tally-emoji-animation="wave" class="nav-cta">Start automating</a>
+            <a href="#" onclick="trackCTA('navbar')" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="🚀" data-tally-emoji-animation="wave" class="nav-cta">Try it free</a>
         </div>
     </nav>
     
@@ -513,7 +505,7 @@
             Show it once. It runs forever.<br>
             No code. No logic. Just show and go.
         </p>
-        <button class="cta-button" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="🚀" data-tally-emoji-animation="wave" onclick="trackCTA('hero')">Show your first task</button>
+        <button class="cta-button" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="🚀" data-tally-emoji-animation="wave" onclick="trackCTA('hero')">Try it free</button>
         <p class="social-proof">Join 2,847 people who stopped doing repetitive work</p>
     </div>
     
@@ -676,7 +668,7 @@
         <div class="container">
             <h2>Stop doing repetitive work</h2>
             <p class="subtext">Your first automation takes 2 minutes to create</p>
-            <button class="cta-button" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="🚀" data-tally-emoji-animation="wave" onclick="trackCTA('final')">Show your first task</button>
+            <button class="cta-button" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="🚀" data-tally-emoji-animation="wave" onclick="trackCTA('final')">Try it free</button>
         </div>
     </div>
     
