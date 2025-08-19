@@ -832,14 +832,30 @@
         }
     ];
     
+    let shuffledVariations = [...heroVariations];
     let currentIndex = 0;
+    
+    // Shuffle array using Fisher-Yates algorithm
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
     
     function cycleHeroText() {
         const textElement = document.getElementById('hero-text');
         const actionElement = document.getElementById('hero-action');
         if (textElement && actionElement) {
-            currentIndex = (currentIndex + 1) % heroVariations.length;
-            const variation = heroVariations[currentIndex];
+            // If we've shown all variations, reshuffle and start over
+            if (currentIndex >= shuffledVariations.length) {
+                shuffledVariations = shuffleArray([...heroVariations]);
+                currentIndex = 0;
+            }
+            
+            const variation = shuffledVariations[currentIndex];
+            currentIndex++;
             
             // Slide out both elements
             textElement.style.transform = 'translateX(-20px)';
@@ -876,6 +892,9 @@
         const heroText = document.getElementById('hero-text');
         const heroAction = document.getElementById('hero-action');
         if (heroText && heroAction) {
+            // Shuffle on page load
+            shuffledVariations = shuffleArray([...heroVariations]);
+            
             heroText.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
             heroText.style.display = 'inline-block';
             heroAction.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
