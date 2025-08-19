@@ -431,11 +431,12 @@
         }
         
         .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 30px;
             max-width: 1100px;
             margin: 0 auto;
+            justify-content: center;
         }
         
         .testimonial-card {
@@ -445,6 +446,8 @@
             padding: 30px;
             position: relative;
             box-shadow: 6px 6px 0 rgba(0,0,0,0.1);
+            flex: 1 1 350px;
+            max-width: 450px;
         }
         
         .time-saved {
