@@ -553,10 +553,10 @@
     </nav>
     
     <div class="hero">
-        <h1>Your daily tasks.<br><span class="highlight-yellow">Running without you.</span></h1>
+        <h1>That <span id="task-type">boring</span> task you just did?<br><span class="highlight-yellow">Never do it again.</span></h1>
         <p class="subhead">
             Show us once. Run it on demand.<br>
-            As easy as recording a Loom video.
+            As easy as recording a Loom.
         </p>
         <button class="cta-button" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="🚀" data-tally-emoji-animation="wave" onclick="trackCTA('hero')">Try it free</button>
         <p class="social-proof">Join 2,847 people who never do the same task twice</p>
@@ -744,6 +744,45 @@
         const footer = document.getElementById('footer-text');
         const randomJoke = footerJokes[Math.floor(Math.random() * footerJokes.length)];
         footer.textContent = randomJoke;
+    });
+    
+    // Cycle through different task descriptors
+    const taskDescriptors = [
+        // Emotion-based
+        'boring', 'annoying', 'tedious', 'soul-crushing', 'mind-numbing', 'repetitive',
+        // Time-based
+        'Monday', 'daily', 'morning', '3pm', 'weekly', 'monthly',
+        // Specific
+        'copy-paste', 'manual', 'data entry', 'spreadsheet', 'email',
+        // Playful
+        'dumb', 'BS', 'monkey', 'stupid', 'pointless', 'ridiculous'
+    ];
+    
+    let currentIndex = 0;
+    
+    function cycleTaskType() {
+        const element = document.getElementById('task-type');
+        if (element) {
+            currentIndex = (currentIndex + 1) % taskDescriptors.length;
+            element.style.opacity = '0';
+            setTimeout(() => {
+                element.textContent = taskDescriptors[currentIndex];
+                element.style.opacity = '1';
+            }, 200);
+        }
+    }
+    
+    // Add transition style
+    document.addEventListener('DOMContentLoaded', function() {
+        const taskType = document.getElementById('task-type');
+        if (taskType) {
+            taskType.style.transition = 'opacity 0.2s ease-in-out';
+            // Start cycling after 2.5 seconds, then every 2.5 seconds
+            setTimeout(() => {
+                cycleTaskType();
+                setInterval(cycleTaskType, 2500);
+            }, 2500);
+        }
     });
 </script>
 
