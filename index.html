@@ -202,29 +202,12 @@
             font-size: 18px;
         }
         
-        .checkbox {
-            width: 24px;
-            height: 24px;
-            border: 2px solid #000;
-            border-radius: 4px;
-            background: white;
-            position: relative;
+        .time-waste-bullet {
+            width: 8px;
+            height: 8px;
+            background: #FF6B6B;
+            border-radius: 50%;
             flex-shrink: 0;
-        }
-        
-        .checkbox.checked {
-            background: white;
-        }
-        
-        .checkbox.checked::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 16px;
-            font-weight: bold;
-            color: #000;
         }
         
         /* How It Works */
@@ -633,19 +616,19 @@
             <div style="text-align: center;">
             <div class="task-list">
                 <div class="task-item">
-                    <div class="checkbox checked"></div>
+                    <div class="time-waste-bullet"></div>
                     <span>Copying between 5+ apps daily</span>
                 </div>
                 <div class="task-item">
-                    <div class="checkbox checked"></div>
+                    <div class="time-waste-bullet"></div>
                     <span>Checking the same sites every morning</span>
                 </div>
                 <div class="task-item">
-                    <div class="checkbox checked"></div>
+                    <div class="time-waste-bullet"></div>
                     <span>Processing identical emails 50x per week</span>
                 </div>
                 <div class="task-item">
-                    <div class="checkbox checked"></div>
+                    <div class="time-waste-bullet"></div>
                     <span>Manually entering data that never changes</span>
                 </div>
             </div>
