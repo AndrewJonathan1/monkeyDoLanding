@@ -730,18 +730,6 @@
         alert('Demo video coming soon!');
     }
     
-    // Track page landed
-    document.addEventListener('DOMContentLoaded', function() {
-        if (typeof posthog !== 'undefined') {
-            posthog.capture('page_landed', {
-                page: 'landing_page',
-                referrer: document.referrer,
-                utm_source: new URLSearchParams(window.location.search).get('utm_source'),
-                utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign')
-            });
-        }
-    });
-    
     // Randomly generate playful monkey footer jokes
     const footerJokes = [
         "© monkeyDo - No monkeys were harmed in the making of this automation",
