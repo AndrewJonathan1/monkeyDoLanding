@@ -59,6 +59,17 @@
             box-shadow: 8px 8px 0 rgba(0,0,0,0.15);
         }
         
+        .version-card.placeholder {
+            border: 3px dashed #ccc;
+            background: #fafafa;
+            cursor: default;
+        }
+        
+        .version-card.placeholder:hover {
+            transform: none;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.05);
+        }
+        
         .version-header {
             display: flex;
             justify-content: space-between;
@@ -85,6 +96,12 @@
         .version-badge.current {
             background: #000;
             color: #FFD60A;
+        }
+        
+        .version-badge.coming-soon {
+            background: transparent;
+            color: #999;
+            border: 2px dashed #999;
         }
         
         
