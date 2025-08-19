@@ -563,7 +563,7 @@
     </nav>
     
     <div class="hero">
-        <h1>That <span id="task-type-container" style="display: inline-block; position: relative; min-width: 150px;"><span id="task-type" style="display: inline-block;">boring</span></span> task<br>you just did?<br><span class="highlight-yellow">Never do it again.</span></h1>
+        <h1><span id="hero-text">That boring task<br>you just did?</span><br><span class="highlight-yellow">Never do it again.</span></h1>
         <p class="subhead">
             Show us once. Run it on demand.<br>
             As easy as recording a Loom.
@@ -761,32 +761,42 @@
         footer.textContent = randomJoke;
     });
     
-    // Cycle through different task descriptors
-    const taskDescriptors = [
-        // Emotion-based
-        'boring', 'annoying', 'tedious', 'soul-crushing', 'mind-numbing', 'repetitive',
-        // Time-based
-        'Monday', 'daily', 'morning', '3pm', 'weekly', 'monthly',
-        // Specific
-        'copy-paste', 'manual', 'data entry', 'spreadsheet', 'email',
-        // Playful
-        'dumb', 'BS', 'monkey', 'stupid', 'pointless', 'ridiculous'
+    // Cycle through different hero text variations
+    const heroTexts = [
+        // "Just did" category - tasks they hate but do
+        "That boring task<br>you just did?",
+        "That Monday task<br>you just did?", 
+        "That tedious task<br>you just did?",
+        "That annoying task<br>you just did?",
+        "That daily task<br>you just did?",
+        "That copy-paste task<br>you just did?",
+        "That dumb task<br>you just did?",
+        "That repetitive task<br>you just did?",
+        
+        // "Never built" category - workflows they wish existed
+        "That workflow you<br>never built?",
+        "That automation you<br>gave up on?",
+        "That 10-step process<br>you keep avoiding?",
+        "That dream workflow<br>you never finished?",
+        "That complex task<br>you outsource?",
+        "That weekend project<br>you keep postponing?",
+        "That integration you<br>wish existed?",
+        "That process that<br>seems impossible?"
     ];
     
     let currentIndex = 0;
     
-    function cycleTaskType() {
-        const element = document.getElementById('task-type');
-        const container = document.getElementById('task-type-container');
-        if (element && container) {
-            currentIndex = (currentIndex + 1) % taskDescriptors.length;
+    function cycleHeroText() {
+        const element = document.getElementById('hero-text');
+        if (element) {
+            currentIndex = (currentIndex + 1) % heroTexts.length;
             
             // Slide out to the left
             element.style.transform = 'translateX(-20px)';
             element.style.opacity = '0';
             
             setTimeout(() => {
-                element.textContent = taskDescriptors[currentIndex];
+                element.innerHTML = heroTexts[currentIndex];
                 // Reset position to the right
                 element.style.transition = 'none';
                 element.style.transform = 'translateX(20px)';
@@ -803,13 +813,14 @@
     
     // Add transition style
     document.addEventListener('DOMContentLoaded', function() {
-        const taskType = document.getElementById('task-type');
-        if (taskType) {
-            taskType.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+        const heroText = document.getElementById('hero-text');
+        if (heroText) {
+            heroText.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+            heroText.style.display = 'inline-block';
             // Start cycling after 3.5 seconds, then every 3.5 seconds
             setTimeout(() => {
-                cycleTaskType();
-                setInterval(cycleTaskType, 3500);
+                cycleHeroText();
+                setInterval(cycleHeroText, 3500);
             }, 3500);
         }
     });
