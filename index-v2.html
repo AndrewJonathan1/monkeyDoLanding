@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>monkeyDo - Your daily tasks. Running without you.</title>
+    <link rel="preconnect" href="https://tally.so">
+    <link rel="dns-prefetch" href="https://tally.so">
+    <script src="https://tally.so/widgets/embed.js"></script>
+    <!-- PostHog Analytics -->
+    <script>
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Re Ms Fs Pe Rs Cs capture Ve calculateEventProperties Ds register register_once register_for_session unregister unregister_for_session zs getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ls As createPersonProfile Ns Is Us opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing is_capturing clear_opt_in_out_capturing Os debug I js getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init('phc_8BxAvgklx3h0MUUYauRwYqXwXpkjqPwxCYMy0l5oeZZ', {
+            api_host: 'https://us.i.posthog.com',
+            person_profiles: 'identified_only'
+        })
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #FFFFFF;
+            color: #000;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-cta {
+            background: #FFD60A;
+            color: #000;
+            text-decoration: none;
+            border: 2px solid #000;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+        
+        .nav-cta:hover {
+            transform: scale(1.05) translateY(-1px);
+            box-shadow: 0 3px 10px rgba(255, 214, 10, 0.4), 2px 2px 0 rgba(0,0,0,0.15);
+            background: #FFDE33;
+        }
+        
+        .nav-cta:active {
+            transform: scale(0.98);
+            box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+            background: #F5C800;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 80px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+        
+        .hero .subhead {
+            font-size: 24px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+        
+        .highlight-yellow {
+            background: linear-gradient(180deg, transparent 60%, #FFD60A 60%);
+            padding: 0 4px;
+        }
+        
+        .cta-button {
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            background: #FFD60A;
+            color: #000;
+            border: 3px solid #000;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05) translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 214, 10, 0.4), 3px 3px 0 rgba(0,0,0,0.15);
+            background: #FFDE33;
+        }
+        
+        .cta-button:active {
+            transform: scale(0.98);
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+            background: #F5C800;
+        }
+        
+        .social-proof {
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        /* Time Waste Section */
+        .time-waste {
+            background: #FFF5E6;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .time-counter {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .time-block {
+            text-align: center;
+        }
+        
+        .time-number {
+            font-size: 64px;
+            font-weight: 900;
+            color: #FF6B6B;
+            line-height: 1;
+        }
+        
+        .time-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+        
+        .task-list {
+            max-width: 500px;
+            margin: 40px auto 0;
+            text-align: left;
+        }
+        
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 12px 0;
+            font-size: 18px;
+        }
+        
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #000;
+            border-radius: 4px;
+            background: white;
+            position: relative;
+        }
+        
+        .checkbox.checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        /* Demo Section */
+        .demo-section {
+            padding: 80px 20px;
+            text-align: center;
+            background: white;
+        }
+        
+        .demo-section h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+        
+        .demo-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #000;
+            border-radius: 20px;
+            padding: 4px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .video-placeholder {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            transition: transform 0.2s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .video-placeholder:hover .play-button {
+            transform: scale(1.1);
+        }
+        
+        .demo-caption {
+            margin-top: 20px;
+            font-size: 18px;
+            opacity: 0.8;
+        }
+        
+        /* Use Cases Section */
+        .use-cases {
+            background: #f5f5f5;
+            padding: 80px 20px;
+        }
+        
+        .use-cases h2 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 900;
+        }
+        
+        .pain-section {
+            margin-bottom: 60px;
+        }
+        
+        .pain-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .pain-label {
+            background: #FF6B6B;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .pain-label.medium {
+            background: #FFA500;
+        }
+        
+        .pain-label.low {
+            background: #4CAF50;
+        }
+        
+        .pain-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        
+        .use-case-card {
+            background: white;
+            border: 2px solid #000;
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .use-case-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.1);
+        }
+        
+        .use-case-emoji {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+        
+        .use-case-before {
+            font-size: 16px;
+            margin-bottom: 12px;
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+        
+        .use-case-after {
+            font-size: 16px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .testimonials h2 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 900;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            background: #FFF5E6;
+            border: 3px solid #000;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .time-saved {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 16px;
+            color: #4CAF50;
+        }
+        
+        .testimonial-quote {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        
+        .testimonial-title {
+            opacity: 0.7;
+            font-size: 14px;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            background: #221e16;
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-size: clamp(36px, 6vw, 64px);
+            margin-bottom: 24px;
+            font-weight: 900;
+        }
+        
+        .final-cta .subtext {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        
+        .final-cta .cta-button {
+            background: #FFD60A;
+            color: #221e16;
+            border-color: #FFD60A;
+        }
+        
+        .final-cta .cta-button:hover {
+            background: #FFDE33;
+            border-color: #FFDE33;
+            transform: scale(1.05) translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 222, 51, 0.5), 3px 3px 0 rgba(255,255,255,0.15);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 20px 10px;
+            opacity: 0.6;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .time-counter {
+                gap: 20px;
+            }
+            
+            .time-number {
+                font-size: 48px;
+            }
+            
+            .use-case-grid,
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .demo-container {
+                margin: 20px 0;
+            }
+            
+            .video-placeholder {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <span>🐵</span>
+                <span>monkeyDo</span>
+            </div>
+            <a href="#" onclick="trackCTA('navbar')" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="🚀" data-tally-emoji-animation="wave" class="nav-cta">Start automating</a>
+        </div>
+    </nav>
+    
+    <div class="hero">
+        <h1>Your daily tasks.<br><span class="highlight-yellow">Running without you.</span></h1>
+        <p class="subhead">
+            Show it once. It runs forever.<br>
+            No code. No logic. Just show and go.
+        </p>
+        <button class="cta-button" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="🚀" data-tally-emoji-animation="wave" onclick="trackCTA('hero')">Show your first task</button>
+        <p class="social-proof">Join 2,847 people who stopped doing repetitive work</p>
+    </div>
+    
+    <div class="time-waste">
+        <div class="container">
+            <h2 style="font-size: 48px; font-weight: 900; margin-bottom: 20px;">Right now you're wasting</h2>
+            <div class="time-counter">
+                <div class="time-block">
+                    <div class="time-number" id="hours">12</div>
+                    <div class="time-label">Hours per week</div>
+                </div>
+                <div class="time-block">
+                    <div class="time-number" id="days">52</div>
+                    <div class="time-label">Days per year</div>
+                </div>
+                <div class="time-block">
+                    <div class="time-number" id="money">24K</div>
+                    <div class="time-label">Dollars in time</div>
+                </div>
+            </div>
+            <div class="task-list">
+                <div class="task-item">
+                    <div class="checkbox checked"></div>
+                    <span>Copying between 5+ apps daily</span>
+                </div>
+                <div class="task-item">
+                    <div class="checkbox checked"></div>
+                    <span>Checking the same sites every morning</span>
+                </div>
+                <div class="task-item">
+                    <div class="checkbox checked"></div>
+                    <span>Processing identical emails 50x per week</span>
+                </div>
+                <div class="task-item">
+                    <div class="checkbox checked"></div>
+                    <span>Manually entering data that never changes</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="demo-section">
+        <div class="container">
+            <h2>2 minutes to freedom</h2>
+            <p style="font-size: 20px; opacity: 0.8; margin-bottom: 40px;">Watch someone build their first automation</p>
+            <div class="demo-container">
+                <div class="video-placeholder" onclick="playVideo()">
+                    <div class="play-button">▶</div>
+                </div>
+            </div>
+            <p class="demo-caption">Invoice processing. Shown once. Runs forever.</p>
+        </div>
+    </div>
+    
+    <div class="use-cases">
+        <div class="container">
+            <h2>What disappears from your day</h2>
+            
+            <div class="pain-section">
+                <div class="pain-header">
+                    <span class="pain-label">Critical</span>
+                    <span class="pain-title">The daily grind (save 2+ hours/day)</span>
+                </div>
+                <div class="use-case-grid">
+                    <div class="use-case-card">
+                        <div class="use-case-emoji">📧</div>
+                        <div class="use-case-before">"Check email → Copy to CRM → Update spreadsheet"</div>
+                        <div class="use-case-after">→ Your monkey does it at 6am</div>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-emoji">🔍</div>
+                        <div class="use-case-before">"Check 20 competitor sites for price changes"</div>
+                        <div class="use-case-after">→ Your monkey checks every hour</div>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-emoji">📝</div>
+                        <div class="use-case-before">"Download invoices, categorize, enter in QuickBooks"</div>
+                        <div class="use-case-after">→ Your monkey processes instantly</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pain-section">
+                <div class="pain-header">
+                    <span class="pain-label medium">Painful</span>
+                    <span class="pain-title">The weekly waste (save 5+ hours/week)</span>
+                </div>
+                <div class="use-case-grid">
+                    <div class="use-case-card">
+                        <div class="use-case-emoji">📊</div>
+                        <div class="use-case-before">"Compile data from 10 sources into weekly report"</div>
+                        <div class="use-case-after">→ Your monkey generates it Sunday night</div>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-emoji">💼</div>
+                        <div class="use-case-before">"Enrich leads with LinkedIn data manually"</div>
+                        <div class="use-case-after">→ Your monkey enriches automatically</div>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-emoji">📨</div>
+                        <div class="use-case-before">"Create and format newsletter from content"</div>
+                        <div class="use-case-after">→ Your monkey assembles and sends</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pain-section">
+                <div class="pain-header">
+                    <span class="pain-label low">Annoying</span>
+                    <span class="pain-title">The monthly marathon (save 10+ hours/month)</span>
+                </div>
+                <div class="use-case-grid">
+                    <div class="use-case-card">
+                        <div class="use-case-emoji">💰</div>
+                        <div class="use-case-before">"Reconcile bank statements with accounting"</div>
+                        <div class="use-case-after">→ Your monkey matches everything</div>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-emoji">📋</div>
+                        <div class="use-case-before">"Run compliance checks across systems"</div>
+                        <div class="use-case-after">→ Your monkey audits continuously</div>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-emoji">👥</div>
+                        <div class="use-case-before">"Process payroll and benefits updates"</div>
+                        <div class="use-case-after">→ Your monkey handles it all</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="testimonials">
+        <div class="container">
+            <h2>Time they got back</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="time-saved">Monday mornings: 3 hours → 0 minutes</div>
+                    <p class="testimonial-quote">"I was spending every Monday morning aggregating data from 5 different sources. Showed my monkey once. Now I wake up to completed reports."</p>
+                    <div class="testimonial-author">Sarah Mitchell</div>
+                    <div class="testimonial-title">Head of Operations</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="time-saved">SDR work: 4 hours → automated</div>
+                    <p class="testimonial-quote">"My monkey does my entire lead enrichment workflow. LinkedIn → Email finder → CRM → Personalized outreach. I just close deals now."</p>
+                    <div class="testimonial-author">Marcus Kim</div>
+                    <div class="testimonial-title">Sales Director</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="time-saved">Daily invoicing: 2 hours → done</div>
+                    <p class="testimonial-quote">"I literally forgot I had this task. My monkey processes 200+ invoices daily, categorizes them, enters into QuickBooks. It just... happens."</p>
+                    <div class="testimonial-author">Jennifer Chen</div>
+                    <div class="testimonial-title">Finance Manager</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="final-cta">
+        <div class="container">
+            <h2>Stop doing repetitive work</h2>
+            <p class="subtext">Your first automation takes 2 minutes to create</p>
+            <button class="cta-button" data-tally-open="wglWWd" data-tally-layout="modal" data-tally-emoji-text="🚀" data-tally-emoji-animation="wave" onclick="trackCTA('final')">Show your first task</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p id="footer-text">© monkeyDo - Where repetitive tasks go to die</p>
+    </footer>
+    
+<script>
+    // PostHog Event Tracking
+    function trackCTA(location, ctaText = 'Show your first task') {
+        if (typeof posthog !== 'undefined') {
+            posthog.capture('cta_clicked', {
+                location: location,
+                cta_text: ctaText,
+                page_scroll_depth: Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100)
+            });
+        }
+    }
+    
+    function playVideo() {
+        if (typeof posthog !== 'undefined') {
+            posthog.capture('video_played');
+        }
+        alert('Demo video coming soon!');
+    }
+    
+    // Animate time counter
+    function animateCounter(id, end, suffix = '') {
+        let current = 0;
+        const increment = end / 50;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= end) {
+                current = end;
+                clearInterval(timer);
+            }
+            document.getElementById(id).textContent = Math.floor(current) + suffix;
+        }, 30);
+    }
+    
+    // Start animations when section is visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter('hours', 12);
+                animateCounter('days', 52);
+                animateCounter('money', 24, 'K');
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+    
+    const timeSection = document.querySelector('.time-waste');
+    if (timeSection) {
+        observer.observe(timeSection);
+    }
+    
+    // Preload Tally form
+    window.addEventListener('DOMContentLoaded', function() {
+        if (window.Tally) {
+            Tally.loadEmbeds();
+        }
+    });
+</script>
+</body>
+</html>
