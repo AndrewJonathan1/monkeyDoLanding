@@ -156,7 +156,7 @@
         
         /* Time Waste Section */
         .time-waste {
-            background: #FFF5E6;
+            background: #f5f5f5;
             padding: 80px 20px;
             text-align: center;
         }
@@ -176,7 +176,10 @@
         .time-number {
             font-size: 64px;
             font-weight: 900;
-            color: #FF6B6B;
+            color: #000;
+            background: linear-gradient(180deg, transparent 60%, #FFD60A 60%);
+            display: inline-block;
+            padding: 0 8px;
             line-height: 1;
         }
         
@@ -244,7 +247,7 @@
         }
         
         .video-placeholder {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #000;
             border-radius: 16px;
             height: 450px;
             display: flex;
@@ -253,6 +256,7 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            border: 3px solid #FFD60A;
         }
         
         .play-button {
@@ -303,22 +307,23 @@
         }
         
         .pain-label {
-            background: #FF6B6B;
-            color: white;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 12px;
+            background: #FFD60A;
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
             font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            border: 2px solid #000;
         }
         
         .pain-label.medium {
-            background: #FFA500;
+            background: white;
+            border: 2px solid #000;
         }
         
         .pain-label.low {
-            background: #4CAF50;
+            background: #f5f5f5;
+            border: 2px solid #000;
         }
         
         .pain-title {
@@ -334,16 +339,17 @@
         
         .use-case-card {
             background: white;
-            border: 2px solid #000;
-            border-radius: 16px;
+            border: 3px solid #000;
+            border-radius: 20px;
             padding: 24px;
             transition: all 0.3s ease;
             cursor: pointer;
+            box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
         }
         
         .use-case-card:hover {
             transform: translateY(-4px);
-            box-shadow: 6px 6px 0 rgba(0,0,0,0.1);
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.15);
         }
         
         .use-case-emoji {
@@ -354,14 +360,17 @@
         .use-case-before {
             font-size: 16px;
             margin-bottom: 12px;
-            text-decoration: line-through;
-            opacity: 0.6;
+            opacity: 0.5;
+            font-style: italic;
         }
         
         .use-case-after {
             font-size: 16px;
             font-weight: bold;
-            color: #4CAF50;
+            color: #000;
+            background: linear-gradient(180deg, transparent 60%, #FFD60A 60%);
+            display: inline-block;
+            padding: 0 4px;
         }
         
         /* Testimonials */
@@ -386,18 +395,22 @@
         }
         
         .testimonial-card {
-            background: #FFF5E6;
+            background: white;
             border: 3px solid #000;
             border-radius: 20px;
             padding: 30px;
             position: relative;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.1);
         }
         
         .time-saved {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 900;
             margin-bottom: 16px;
-            color: #4CAF50;
+            color: #000;
+            background: linear-gradient(180deg, transparent 60%, #FFD60A 60%);
+            display: inline-block;
+            padding: 0 4px;
         }
         
         .testimonial-quote {
@@ -557,36 +570,36 @@
     
     <div class="use-cases">
         <div class="container">
-            <h2>What disappears from your day</h2>
+            <h2>Work that disappears forever 🎉</h2>
             
             <div class="pain-section">
                 <div class="pain-header">
-                    <span class="pain-label">Critical</span>
-                    <span class="pain-title">The daily grind (save 2+ hours/day)</span>
+                    <span class="pain-label">🔥 Daily torture</span>
+                    <span class="pain-title">Tasks you hate every single morning</span>
                 </div>
                 <div class="use-case-grid">
                     <div class="use-case-card">
                         <div class="use-case-emoji">📧</div>
-                        <div class="use-case-before">"Check email → Copy to CRM → Update spreadsheet"</div>
-                        <div class="use-case-after">→ Your monkey does it at 6am</div>
+                        <div class="use-case-before">Checking email, copying to CRM, updating spreadsheet...</div>
+                        <div class="use-case-after">🐒 runs at 6am while you sleep</div>
                     </div>
                     <div class="use-case-card">
                         <div class="use-case-emoji">🔍</div>
-                        <div class="use-case-before">"Check 20 competitor sites for price changes"</div>
-                        <div class="use-case-after">→ Your monkey checks every hour</div>
+                        <div class="use-case-before">Manually checking 20 competitor sites...</div>
+                        <div class="use-case-after">🐒 checks every hour, alerts you</div>
                     </div>
                     <div class="use-case-card">
                         <div class="use-case-emoji">📝</div>
-                        <div class="use-case-before">"Download invoices, categorize, enter in QuickBooks"</div>
-                        <div class="use-case-after">→ Your monkey processes instantly</div>
+                        <div class="use-case-before">Download, categorize, enter invoices...</div>
+                        <div class="use-case-after">🐒 processes instantly, perfectly</div>
                     </div>
                 </div>
             </div>
             
             <div class="pain-section">
                 <div class="pain-header">
-                    <span class="pain-label medium">Painful</span>
-                    <span class="pain-title">The weekly waste (save 5+ hours/week)</span>
+                    <span class="pain-label medium">😩 Weekly dread</span>
+                    <span class="pain-title">Hours you'll never get back</span>
                 </div>
                 <div class="use-case-grid">
                     <div class="use-case-card">
@@ -609,8 +622,8 @@
             
             <div class="pain-section">
                 <div class="pain-header">
-                    <span class="pain-label low">Annoying</span>
-                    <span class="pain-title">The monthly marathon (save 10+ hours/month)</span>
+                    <span class="pain-label low">🙄 Monthly slog</span>
+                    <span class="pain-title">That task you keep putting off</span>
                 </div>
                 <div class="use-case-grid">
                     <div class="use-case-card">
