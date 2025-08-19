@@ -378,14 +378,38 @@
             margin-top: 20px;
         }
         
+        .testimonials-section {
+            padding: 60px 20px;
+            text-align: center;
+            background: #f5f5f5;
+        }
+        
+        .testimonials-section h2 {
+            font-size: 48px;
+            margin-bottom: 40px;
+            font-weight: 900;
+        }
+        
+        .testimonial-carousel {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
         .testimonial {
             background: white;
             border: 3px solid #000;
             border-radius: 20px;
             padding: 35px;
             max-width: 700px;
-            margin: 50px auto;
+            margin: 0 auto;
             position: relative;
+            display: none;
+        }
+        
+        .testimonial.active {
+            display: block;
         }
         
         .testimonial:before {
@@ -411,6 +435,46 @@
             opacity: 0.7;
         }
         
+        .carousel-nav {
+            margin-top: 30px;
+        }
+        
+        .carousel-btn {
+            background: #FFD60A;
+            border: 2px solid #000;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: transform 0.2s;
+        }
+        
+        .carousel-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .carousel-dots {
+            margin-top: 20px;
+        }
+        
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .dot.active {
+            background: #000;
+        }
+        
         .final-cta {
             text-align: center;
             padding: 80px 20px;
@@ -427,6 +491,11 @@
             font-size: 18px;
             margin-top: 30px;
             opacity: 0.8;
+        }
+        
+        .highlight {
+            background: linear-gradient(180deg, transparent 60%, #FFD60A 60%);
+            padding: 0 2px;
         }
         
         footer {
@@ -487,7 +556,7 @@
     </nav>
     
     <div class="hero">
-        <h1>monkey see.<br>monkey do.</h1>
+        <h1><span class="highlight">monkey see</span>.<br><span class="highlight">monkey do</span>.</h1>
         <p class="subhead">
             Show our monkeys once.<br>
             They will run it on demand.
@@ -511,23 +580,18 @@
         <div class="how-it-works">
             <div class="step-card">
                 <div class="step-number">Step 1</div>
-                <h3>🐵 monkey see</h3>
+                <h3>🐵 <span class="highlight">monkey see</span></h3>
                 <p>Screen record your task</p>
             </div>
             <div class="arrow-divider">→</div>
             <div class="step-card">
                 <div class="step-number">Step 2</div>
-                <h3>🤖 monkey do</h3>
+                <h3>🐒 <span class="highlight">monkey do</span></h3>
                 <p>Our ai monkey agents<br>run it on demand</p>
             </div>
         </div>
     </div>
     
-    <div class="social-proof">
-        <span>"Built a newsletter aggregator in 5 min" - Sarah M.</span>
-        <span>"My lead enrichment tool makes $3K/mo" - Marcus K.</span>
-        <span>"$10K MRR from 3 recordings" - Jennifer L.</span>
-    </div>
     
     <div class="section">
         <h2>The Problem</h2>
@@ -542,10 +606,42 @@
             </div>
         </div>
         
-    <div class="testimonial">
-        <p>"I recorded myself checking prices on 5 websites and putting them in a spreadsheet. Added a payment link. Now 500 Amazon sellers pay me $29/month for my 'price monitoring tool.' It took 4 minutes to show my monkey."</p>
-        <div class="testimonial-author">David Chen</div>
-        <div class="testimonial-title">Accidentally a founder</div>
+    <div class="testimonials-section">
+        <div class="container">
+            <h2>Success Stories</h2>
+            <div class="testimonial-carousel">
+                <div class="testimonial active">
+                    <p>"I was spending 3 hours every morning aggregating newsletters for my team. Showed monkeyDo once how to collect, format, and send them. Now it runs at 6am daily. Built the whole thing during a coffee break."</p>
+                    <div class="testimonial-author">Sarah Mitchell</div>
+                    <div class="testimonial-title">Head of Marketing, TechCorp</div>
+                </div>
+                <div class="testimonial">
+                    <p>"My agency needed lead enrichment but couldn't afford the $500/mo tools. I recorded myself looking up LinkedIn profiles and company data. Now I sell the same automation to other agencies for $97/mo. Already at $3K MRR after 2 weeks."</p>
+                    <div class="testimonial-author">Marcus Kim</div>
+                    <div class="testimonial-title">Digital Agency Owner</div>
+                </div>
+                <div class="testimonial">
+                    <p>"I recorded myself checking prices on 5 websites and putting them in a spreadsheet. Added a payment link. Now 500 Amazon sellers pay me $29/month for my 'price monitoring tool.' It took 4 minutes to show my monkey."</p>
+                    <div class="testimonial-author">David Chen</div>
+                    <div class="testimonial-title">Accidentally a founder</div>
+                </div>
+                <div class="testimonial">
+                    <p>"Three recordings: invoice processing, customer onboarding, report generation. Saved 15 hours/week instantly. My clients think I hired a team. I just taught some monkeys. $10K MRR and growing."</p>
+                    <div class="testimonial-author">Jennifer Lopez</div>
+                    <div class="testimonial-title">Freelance Consultant</div>
+                </div>
+            </div>
+            <div class="carousel-nav">
+                <button class="carousel-btn prev" onclick="changeTestimonial(-1)">←</button>
+                <button class="carousel-btn next" onclick="changeTestimonial(1)">→</button>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active" onclick="goToTestimonial(0)"></span>
+                <span class="dot" onclick="goToTestimonial(1)"></span>
+                <span class="dot" onclick="goToTestimonial(2)"></span>
+                <span class="dot" onclick="goToTestimonial(3)"></span>
+            </div>
+        </div>
     </div>
     
     <div class="final-cta">
@@ -584,6 +680,31 @@
         const randomJoke = footerJokes[Math.floor(Math.random() * footerJokes.length)];
         footer.textContent = randomJoke;
     });
+    
+    // Testimonial carousel
+    let currentTestimonial = 0;
+    const testimonials = document.querySelectorAll('.testimonial');
+    const dots = document.querySelectorAll('.dot');
+    
+    function showTestimonial(index) {
+        testimonials.forEach(t => t.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        
+        testimonials[index].classList.add('active');
+        dots[index].classList.add('active');
+    }
+    
+    function changeTestimonial(direction) {
+        currentTestimonial += direction;
+        if (currentTestimonial < 0) currentTestimonial = testimonials.length - 1;
+        if (currentTestimonial >= testimonials.length) currentTestimonial = 0;
+        showTestimonial(currentTestimonial);
+    }
+    
+    function goToTestimonial(index) {
+        currentTestimonial = index;
+        showTestimonial(currentTestimonial);
+    }
 </script>
 
 <script>
