@@ -1,5 +1,34 @@
 # MonkeyDo Landing Page - TODO & Strategy
 
+## 🔒 Repository Privacy
+
+**TODO**: Make this repository private so commits and development work aren't publicly visible.
+
+## 📊 Implementation TODO
+
+### Phase 1: Immediate Changes
+- [ ] Replace waitlist with "Start Building - It's Free"
+- [ ] Add PostHog analytics
+- [ ] Track: Button clicks, scroll depth, time on page
+- [ ] A/B test: "Start Free" vs "Book Demo" vs "Get Early Access"
+
+### Phase 2: Fake Door Testing
+- [ ] Build simple onboarding flow (3 steps max)
+- [ ] Collect:
+  - Use case (what will you automate?)
+  - Team size
+  - Current tools they use
+  - Price they'd pay
+- [ ] Show: "Great! You're #X in line. We'll onboard you within 48 hours"
+
+### Phase 3: Price Validation
+- [ ] Test pricing tiers:
+  - Hobby: $29/mo
+  - Pro: $99/mo
+  - Team: $299/mo
+- [ ] Offer: "Lock in Founder's pricing - 50% off forever"
+- [ ] Don't charge yet, but get card details
+
 ## 📝 Original Question
 
 > We shouldn't be redirecting them to a waitlist, they should be going directly to our product. Ahead of the product we need to measure stuff, do we measure posthog, well we should do that, but we should have a "REAL cta", how do people do this?
@@ -43,31 +72,6 @@ Level 3: Founder's Price ($X/mo locked in)
 ```
 - Measures: Commitment gradient
 - Examples: Tesla Cybertruck, many crowdfunded products
-
-## 📊 Implementation TODO
-
-### Phase 1: Immediate Changes
-- [ ] Replace waitlist with "Start Building - It's Free"
-- [ ] Add PostHog analytics
-- [ ] Track: Button clicks, scroll depth, time on page
-- [ ] A/B test: "Start Free" vs "Book Demo" vs "Get Early Access"
-
-### Phase 2: Fake Door Testing
-- [ ] Build simple onboarding flow (3 steps max)
-- [ ] Collect:
-  - Use case (what will you automate?)
-  - Team size
-  - Current tools they use
-  - Price they'd pay
-- [ ] Show: "Great! You're #X in line. We'll onboard you within 48 hours"
-
-### Phase 3: Price Validation
-- [ ] Test pricing tiers:
-  - Hobby: $29/mo
-  - Pro: $99/mo
-  - Team: $299/mo
-- [ ] Offer: "Lock in Founder's pricing - 50% off forever"
-- [ ] Don't charge yet, but get card details
 
 ## 🔬 Metrics to Track
 
@@ -165,3 +169,7 @@ posthog.capture('fake_door_completed', {
 ---
 
 **Remember**: The goal isn't to get emails. It's to validate that people will PAY for this solution. Every step should move toward that validation.
+
+## 🔒 Repository Privacy
+
+**TODO**: Make this repository private so commits and development work aren't publicly visible.
